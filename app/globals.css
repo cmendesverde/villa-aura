@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #1A1612;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -webkit-text-size-adjust: 100%;
+  touch-action: pan-y;
+}
+
+html::-webkit-scrollbar,
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background: #1A1612;
+  color: #F5F0E8;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+@media (max-width: 768px) {
+  button, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
