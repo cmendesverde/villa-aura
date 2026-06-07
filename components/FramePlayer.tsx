@@ -1,6 +1,12 @@
 'use client'
 import { useEffect, useRef, useCallback, MutableRefObject } from 'react'
 
+const CDN_BASE = process.env.NEXT_PUBLIC_CDN_URL || ''
+
+function assetUrl(path: string): string {
+  return CDN_BASE ? `${CDN_BASE}/${path}` : `/assets/${path}`
+}
+
 const SCENES = [
   { folder: '00-hero',       count: 121 },
   { folder: '01-entrance',   count: 121 },
@@ -20,7 +26,7 @@ function buildFramePaths(): string[] {
   for (const scene of SCENES) {
     for (let i = 1; i <= scene.count; i++) {
       paths.push(
-        `/assets/frames/${scene.folder}/frame_${String(i).padStart(4, '0')}.jpg`
+        assetUrl(`frames/${scene.folder}/frame_${String(i).padStart(4, '0')}.jpg`)
       )
     }
   }
@@ -89,7 +95,7 @@ export default function FramePlayer({
     const ctx = canvas.getContext('2d')
     if (!ctx) return
     const hero = new Image()
-    hero.src = '/assets/images/00-hero/HERO.png'
+    hero.src = assetUrl('images/00-hero/HERO.png')
     hero.onload = () => {
       canvas.width  = window.innerWidth
       canvas.height = window.innerHeight
@@ -99,7 +105,7 @@ export default function FramePlayer({
       ctx.drawImage(hero, x, y, hero.naturalWidth * scale, hero.naturalHeight * scale)
       console.log('Hero image drawn immediately on canvas')
     }
-    hero.onerror = () => console.warn('Hero immediate-draw failed — check /assets/images/00-hero/HERO.png')
+    hero.onerror = () => console.warn('Hero immediate-draw failed:', assetUrl('images/00-hero/HERO.png'))
   }, [])
 
   // Preload all frames — runs exactly once
@@ -136,7 +142,7 @@ export default function FramePlayer({
       // Still trigger ready — Loader has its own timeout fallback
       triggerReady()
     }
-    hero.src = '/assets/images/00-hero/HERO.png'
+    hero.src = assetUrl('images/00-hero/HERO.png')
 
     // Remaining frames — skip index 0 (replaced by hero)
     paths.forEach((src, i) => {
