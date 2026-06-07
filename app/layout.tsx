@@ -4,7 +4,7 @@ import localFont from 'next/font/local'
 import './globals.css'
 
 const okaluera = localFont({
-  src: '../public/assets/fonts/Okaluera.otf',
+  src: './fonts/Okaluera.otf',
   variable: '--font-okaluera',
   display: 'swap',
 })
