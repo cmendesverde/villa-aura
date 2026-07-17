@@ -26,6 +26,15 @@ npm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Assets — too large for GitHub/Vercel (841 MB total)
-# Host on Cloudflare R2, Supabase Storage, or similar CDN
-public/assets/
+# Large binary assets — 841 MB total, must be hosted on CDN
+# (Cloudflare R2 / Supabase Storage / similar)
+# Keep fonts — needed for build
+assets/frames/
+assets/images/
+assets/textures/
+assets/videos/
+public/assets/frames/
+public/assets/frames-webp/
+public/assets/images/
+
+.vercel

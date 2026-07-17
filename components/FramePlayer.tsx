@@ -1,24 +1,27 @@
 'use client'
 import { useEffect, useRef, useCallback, MutableRefObject } from 'react'
 
-const CDN_BASE = process.env.NEXT_PUBLIC_CDN_URL || ''
+// Hero poster served from jsDelivr (same repo as the other poster images).
+const CDN_IMAGES = 'https://cdn.jsdelivr.net/gh/cmendesverde/villa-aura-images@main'
+const HERO_IMAGE = `${CDN_IMAGES}/00-hero/HERO.webp`
 
-function assetUrl(path: string): string {
-  return CDN_BASE ? `${CDN_BASE}/${path}` : `/assets/${path}`
-}
+// Frames served from jsDelivr (public GitHub repos, split in two to stay
+// under GitHub free hosting). Scenes 00–05 → repo A, 06–10 → repo B.
+const CDN_FRAMES_A = 'https://cdn.jsdelivr.net/gh/cmendesverde/villa-aura-frames-a@main'
+const CDN_FRAMES_B = 'https://cdn.jsdelivr.net/gh/cmendesverde/villa-aura-frames-b@main'
 
 const SCENES = [
-  { folder: '00-hero',       count: 121 },
-  { folder: '01-entrance',   count: 121 },
-  { folder: '02-lobby',      count: 121 },
-  { folder: '03-living-room',count: 121 },
-  { folder: '04-corridor',   count: 121 },
-  { folder: '05-suite',      count: 121 },
-  { folder: '06-bathroom',   count: 121 },
-  { folder: '07-terrace',    count: 121 },
-  { folder: '08-pool',       count: 121 },
-  { folder: '09-events',     count: 121 },
-  { folder: '10-sunset',     count: 121 },
+  { folder: '00-hero',       count: 61, base: CDN_FRAMES_A },
+  { folder: '01-entrance',   count: 61, base: CDN_FRAMES_A },
+  { folder: '02-lobby',      count: 61, base: CDN_FRAMES_A },
+  { folder: '03-living-room',count: 61, base: CDN_FRAMES_A },
+  { folder: '04-corridor',   count: 61, base: CDN_FRAMES_A },
+  { folder: '05-suite',      count: 61, base: CDN_FRAMES_A },
+  { folder: '06-bathroom',   count: 61, base: CDN_FRAMES_B },
+  { folder: '07-terrace',    count: 61, base: CDN_FRAMES_B },
+  { folder: '08-pool',       count: 61, base: CDN_FRAMES_B },
+  { folder: '09-events',     count: 61, base: CDN_FRAMES_B },
+  { folder: '10-sunset',     count: 61, base: CDN_FRAMES_B },
 ]
 
 function buildFramePaths(): string[] {
@@ -26,7 +29,7 @@ function buildFramePaths(): string[] {
   for (const scene of SCENES) {
     for (let i = 1; i <= scene.count; i++) {
       paths.push(
-        assetUrl(`frames/${scene.folder}/frame_${String(i).padStart(4, '0')}.jpg`)
+        `${scene.base}/${scene.folder}/frame_${String(i).padStart(4, '0')}.webp`
       )
     }
   }
@@ -95,7 +98,7 @@ export default function FramePlayer({
     const ctx = canvas.getContext('2d')
     if (!ctx) return
     const hero = new Image()
-    hero.src = assetUrl('images/00-hero/HERO.png')
+    hero.src = HERO_IMAGE
     hero.onload = () => {
       canvas.width  = window.innerWidth
       canvas.height = window.innerHeight
@@ -105,7 +108,7 @@ export default function FramePlayer({
       ctx.drawImage(hero, x, y, hero.naturalWidth * scale, hero.naturalHeight * scale)
       console.log('Hero image drawn immediately on canvas')
     }
-    hero.onerror = () => console.warn('Hero immediate-draw failed:', assetUrl('images/00-hero/HERO.png'))
+    hero.onerror = () => console.warn('Hero immediate-draw failed:', HERO_IMAGE)
   }, [])
 
   // Preload all frames — runs exactly once
@@ -142,7 +145,7 @@ export default function FramePlayer({
       // Still trigger ready — Loader has its own timeout fallback
       triggerReady()
     }
-    hero.src = assetUrl('images/00-hero/HERO.png')
+    hero.src = HERO_IMAGE
 
     // Remaining frames — skip index 0 (replaced by hero)
     paths.forEach((src, i) => {

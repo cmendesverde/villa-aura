@@ -13,7 +13,7 @@ import { scenes } from '@/lib/scenes'
 const FramePlayer = dynamic(() => import('@/components/FramePlayer'), { ssr: false })
 const LensFlare   = dynamic(() => import('@/components/LensFlare'),   { ssr: false })
 
-const FRAME_COUNTS  = [121, 121, 121, 121, 121, 121, 121, 121, 121, 121, 121]
+const FRAME_COUNTS  = [61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61]
 const SCENE_STARTS  = FRAME_COUNTS.reduce<number[]>((acc, _, i) => {
   acc.push(i === 0 ? 0 : acc[i - 1] + FRAME_COUNTS[i - 1])
   return acc

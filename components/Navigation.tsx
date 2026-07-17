@@ -5,8 +5,8 @@ import { scenes } from '@/lib/scenes'
 
 const RIBBON_LABELS = ['Arrival', 'Entrance', 'Lobby', 'Living', 'Corridor', 'Suite', 'Bathroom', 'Terrace', 'Pool', 'Events', 'Sunset']
 
-const FRAME_COUNTS = [121, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120]
-const TOTAL_FRAMES = FRAME_COUNTS.reduce((a, b) => a + b, 0) // 1321
+const FRAME_COUNTS = [61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61]
+const TOTAL_FRAMES = FRAME_COUNTS.reduce((a, b) => a + b, 0) // 671
 
 const SCENE_STARTS = FRAME_COUNTS.reduce((acc, _count, i) => {
   acc.push(i === 0 ? 0 : acc[i - 1] + FRAME_COUNTS[i - 1])

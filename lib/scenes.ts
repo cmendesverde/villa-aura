@@ -1,6 +1,7 @@
-const CDN_BASE = process.env.NEXT_PUBLIC_CDN_URL || ''
+// Poster images served from jsDelivr (public GitHub repo, WebP).
+const CDN_IMAGES = 'https://cdn.jsdelivr.net/gh/cmendesverde/villa-aura-images@main'
 function imgUrl(path: string): string {
-  return CDN_BASE ? `${CDN_BASE}/${path}` : `/assets/${path}`
+  return `${CDN_IMAGES}/${path}`
 }
 
 export interface Scene {
@@ -23,7 +24,7 @@ export const scenes: Scene[] = [
     headline: 'Villa Aura',
     subtitle: 'Above the ocean',
     details: 'Exclusive private villa · Mediterranean cliffside · Available for stays & events',
-    imagePath: imgUrl('images/00-hero/HERO.png'),
+    imagePath: imgUrl('00-hero/HERO.webp'),
   },
   {
     id: 1,
@@ -33,7 +34,7 @@ export const scenes: Scene[] = [
     headline: 'The Threshold',
     subtitle: 'Where the world dissolves',
     details: 'Monumental pivot door · Travertine stone · Natural filtered light',
-    imagePath: imgUrl('images/01-entrance/ENTRANCE.png'),
+    imagePath: imgUrl('01-entrance/ENTRANCE.webp'),
   },
   {
     id: 2,
@@ -43,7 +44,7 @@ export const scenes: Scene[] = [
     headline: 'Open Sky',
     subtitle: 'Twelve metres of glass',
     details: '12m floor-to-ceiling glass · Double height ceiling · Polished concrete floors',
-    imagePath: imgUrl('images/02-LOBBY/LOBBY.png'),
+    imagePath: imgUrl('02-LOBBY/LOBBY.webp'),
   },
   {
     id: 3,
@@ -53,7 +54,7 @@ export const scenes: Scene[] = [
     headline: 'Living Space',
     subtitle: 'The ocean as wallpaper',
     details: 'Open plan · Bespoke Italian furnishings · Full ocean panorama · Integrated sound',
-    imagePath: imgUrl('images/03-living-room/LIVING%20ROOM.png'),
+    imagePath: imgUrl('03-living-room/LIVING%20ROOM.webp'),
   },
   {
     id: 4,
@@ -63,7 +64,7 @@ export const scenes: Scene[] = [
     headline: 'Between Moments',
     subtitle: '',
     details: 'Hand-laid limestone · Indirect lighting · Ocean views at every turn',
-    imagePath: imgUrl('images/04-corridor/CORRIDOR.png'),
+    imagePath: imgUrl('04-corridor/CORRIDOR.webp'),
   },
   {
     id: 5,
@@ -73,7 +74,7 @@ export const scenes: Scene[] = [
     headline: 'The Suite',
     subtitle: 'Sleep above the horizon',
     details: '210 m² · King size bed · Handwoven silk linens · Private ocean terrace',
-    imagePath: imgUrl('images/05-suite/SUITE.png'),
+    imagePath: imgUrl('05-suite/SUITE.webp'),
   },
   {
     id: 6,
@@ -83,7 +84,7 @@ export const scenes: Scene[] = [
     headline: 'Water Ritual',
     subtitle: 'Marble from a single mountain',
     details: 'Freestanding stone bathtub · Single-mountain marble · Sky-open shower',
-    imagePath: imgUrl('images/06-bathroom/BATHROOM.png'),
+    imagePath: imgUrl('06-bathroom/BATHROOM.webp'),
   },
   {
     id: 7,
@@ -93,7 +94,7 @@ export const scenes: Scene[] = [
     headline: 'Edge of the World',
     subtitle: 'Breakfast at dawn',
     details: 'Seamless cliff edge · Breakfast at dawn · Cocktails at dusk · 180° ocean view',
-    imagePath: imgUrl('images/07-terrace/TERRACE.png'),
+    imagePath: imgUrl('07-terrace/TERRACE.webp'),
   },
   {
     id: 8,
@@ -103,7 +104,7 @@ export const scenes: Scene[] = [
     headline: 'Liquid Horizon',
     subtitle: 'Twenty-two metres of infinity',
     details: '22m heated infinity pool · Submerged sunbeds · Poolside dining service',
-    imagePath: imgUrl('images/08-pool/POOL.png'),
+    imagePath: imgUrl('08-pool/POOL.webp'),
   },
   {
     id: 9,
@@ -113,7 +114,7 @@ export const scenes: Scene[] = [
     headline: 'Celebrate Here',
     subtitle: 'Gatherings around the light',
     details: 'Up to 20 guests · 3 indoor spaces · Catering available · Ocean pavilion',
-    imagePath: imgUrl('images/09-events/EVENTS.png'),
+    imagePath: imgUrl('09-events/EVENTS.webp'),
   },
   {
     id: 10,
@@ -123,6 +124,6 @@ export const scenes: Scene[] = [
     headline: 'Reserve Villa Aura',
     subtitle: 'hello@villaaura.com',
     details: 'hello@villaaura.com · +34 900 000 000 · Request availability',
-    imagePath: imgUrl('images/10-sunset/SUNSET.png'),
+    imagePath: imgUrl('10-sunset/SUNSET.webp'),
   },
 ]
