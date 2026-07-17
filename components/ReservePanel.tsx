@@ -21,11 +21,11 @@ const POLICIES = [
   { title: 'House Rules', content: 'No smoking indoors · Pets on request · Maximum 20 guests · Private security included · Concierge service available 24/7' },
 ]
 
-function getDaysInMonth(year: number, month: number) { return new Date(year, month + 1, 0).getDate() }
-function getFirstDay(year: number, month: number) { return new Date(year, month, 1).getDay() }
-function isSameDay(a: Date, b: Date) { return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate() }
-function isInRange(date: Date, start: Date | null, end: Date | null) { if (!start || !end) return false; return date > start && date < end }
-function formatShort(d: Date) { return `${d.getDate()} ${SHORT_MONTHS[d.getMonth()]}` }
+function getDaysInMonth(year: number, month: number): number { return new Date(year, month + 1, 0).getDate() }
+function getFirstDay(year: number, month: number): number { return new Date(year, month, 1).getDay() }
+function isSameDay(a: Date, b: Date): boolean { return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate() }
+function isInRange(date: Date, start: Date | null, end: Date | null): boolean { if (!start || !end) return false; return date > start && date < end }
+function formatShort(d: Date): string { return `${d.getDate()} ${SHORT_MONTHS[d.getMonth()]}` }
 
 function CalendarMonth({
   year, month, checkIn, checkOut, hoverDate, onDayClick, onDayHover, cellSize = 44,

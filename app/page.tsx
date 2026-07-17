@@ -8,7 +8,6 @@ import { Overlay } from '@/components/Overlay'
 import { Loader } from '@/components/Loader'
 import { Navigation } from '@/components/Navigation'
 import { ReservePanel } from '@/components/ReservePanel'
-import { scenes } from '@/lib/scenes'
 
 const FramePlayer = dynamic(() => import('@/components/FramePlayer'), { ssr: false })
 const LensFlare   = dynamic(() => import('@/components/LensFlare'),   { ssr: false })
@@ -19,8 +18,6 @@ const SCENE_STARTS  = FRAME_COUNTS.reduce<number[]>((acc, _, i) => {
   return acc
 }, [])
 const TOTAL_FRAMES  = FRAME_COUNTS.reduce((a, b) => a + b, 0)
-console.log('SCENE_STARTS:', SCENE_STARTS)
-console.log('TOTAL_FRAMES:', TOTAL_FRAMES)
 
 export default function Home() {
   const scrollProgressRef = useRef(0)
@@ -84,10 +81,6 @@ export default function Home() {
     // Framer Motion exit transition takes 0.9s
     setLoaderVisible(false)
   }, [])
-
-  useEffect(() => {
-    console.log('currentScene:', currentScene)
-  }, [currentScene])
 
   useEffect(() => {
     document.body.style.overflow = reserveOpen ? 'hidden' : ''

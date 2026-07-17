@@ -35,7 +35,6 @@ export function Navigation({ currentScene, scrollProgress, onDotClick }: Navigat
     const targetProgress = targetFrame / (TOTAL_FRAMES - 1)
     const maxScroll = document.body.scrollHeight - window.innerHeight
     const targetScroll = targetProgress * maxScroll
-    console.log('Navigate to scene:', sceneIndex, 'frame:', targetFrame, 'scroll:', targetScroll)
     window.scrollTo({ top: targetScroll, behavior: 'smooth' })
     setMenuOpen(false)
   }

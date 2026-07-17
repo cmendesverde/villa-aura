@@ -106,7 +106,6 @@ export default function FramePlayer({
       const x = (canvas.width  - hero.naturalWidth  * scale) / 2
       const y = (canvas.height - hero.naturalHeight * scale) / 2
       ctx.drawImage(hero, x, y, hero.naturalWidth * scale, hero.naturalHeight * scale)
-      console.log('Hero image drawn immediately on canvas')
     }
     hero.onerror = () => console.warn('Hero immediate-draw failed:', HERO_IMAGE)
   }, [])
@@ -117,11 +116,6 @@ export default function FramePlayer({
     const total = paths.length
     const frames = new Array<HTMLImageElement>(total)
     framesRef.current = frames
-
-    console.log('FramePlayer: loading', total, 'frames')
-    console.log('Frame 0 src:', paths[0])
-    console.log('Frame 1 src:', paths[1])
-    console.log('Frame 2 src:', paths[2])
 
     const triggerReady = () => {
       if (!isReadyRef.current) {

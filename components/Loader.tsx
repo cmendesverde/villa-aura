@@ -22,7 +22,6 @@ export function Loader({ progress, visible, onComplete }: LoaderProps) {
     const timer = setTimeout(() => {
       if (!doneRef.current) {
         doneRef.current = true
-        console.log('Loader: 5s timeout — forcing experience to show')
         onComplete()
       }
     }, 5000)
@@ -34,7 +33,6 @@ export function Loader({ progress, visible, onComplete }: LoaderProps) {
   useEffect(() => {
     if (progress >= 30 && !doneRef.current) {
       doneRef.current = true
-      console.log('Loader: progress reached', progress, '% — showing experience')
       onComplete()
     }
   }, [progress, onComplete])

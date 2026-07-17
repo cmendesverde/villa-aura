@@ -29,8 +29,6 @@ const childVariants = {
   },
 }
 
-console.log('Scenes loaded:', scenes.length, 'scenes')
-
 interface OverlayProps {
   currentScene: number
   onReserve: () => void
